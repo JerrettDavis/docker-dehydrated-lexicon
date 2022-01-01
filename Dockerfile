@@ -17,6 +17,7 @@ RUN apk add --update --no-cache gcc build-base python3-dev libffi-dev libressl-d
 # Add necessary script to the image.
 COPY entrypoint.sh /entrypont.sh
 COPY dehydrated.default.sh /dehydrated/hooks/dehydrated.default.sh
+COPY flattenCerts.py /dehydrated/flattenCerts.py
 
 # Ensure the required permissions on the executables.
 RUN chmod +x /dehydrated/hooks/dehydrated.default.sh && \

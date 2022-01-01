@@ -68,7 +68,8 @@ function invalid_challenge() {
 function deploy_cert {
     local DOMAIN="${1}" KEYFILE="${2}" CERTFILE="${3}" FULLCHAINFILE="${4}" CHAINFILE="${5}"
 
-    echo "deploy_cert called: ${DOMAIN}, ${KEYFILE}, ${CERTFILE}, ${FULLCHAINFILE}, ${CHAINFILE}"
+    echo "deploy_cert called: ${DOMAIN}, ${KEYFILE}, ${CERTFILE}, ${FULLCHAINFILE}, ${CHAINFILE}"    
+    exec python3 /dehydrated/flattenCerts.py
 
     # This hook is called once for each certificate that has been
     # produced. Here you might, for instance, copy your new certificates
@@ -92,7 +93,8 @@ function unchanged_cert {
     local DOMAIN="${1}" KEYFILE="${2}" CERTFILE="${3}" FULLCHAINFILE="${4}" CHAINFILE="${5}"
 
     echo "unchanged_cert called: ${DOMAIN}, ${KEYFILE}, ${CERTFILE}, ${FULLCHAINFILE}, ${CHAINFILE}"
-
+    exec python3 /dehydrated/flattenCerts.py
+    
     # This hook is called once for each certificate that is still
     # valid and therefore wasn't reissued.
     #
